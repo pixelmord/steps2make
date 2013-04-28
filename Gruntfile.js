@@ -280,7 +280,8 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('karma', [
+  grunt.registerTask('travis', [
+    'jshint',
     'karma'
   ]);
 
