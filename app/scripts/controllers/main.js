@@ -5,6 +5,7 @@ angular.module('steps2makeApp')
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
-      'Karma'
+      'Karma',
+      'Makerspirit'
     ];
   });
