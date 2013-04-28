@@ -102,6 +102,11 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
+      },
+      travis: {
+        configFile: 'karma.conf.js',
+        browsers: ['PhantomJS'],
+        singleRun: true
       }
     },
     coffee: {
@@ -125,18 +130,28 @@ module.exports = function (grunt) {
       }
     },
     compass: {
-      options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/components',
-        relativeAssets: true
+      dist: {
+        options: {
+          sassDir: '<%= yeoman.app %>/styles',
+          cssDir: '<%= yeoman.dist %>/styles',
+          imagesDir: '<%= yeoman.app %>/images',
+          javascriptsDir: '<%= yeoman.app %>/scripts',
+          fontsDir: '<%= yeoman.app %>/styles/fonts',
+          importPath: '<%= yeoman.app %>/components',
+          relativeAssets: true,
+          environment: 'production',
+          outputStyle: 'compressed'
+        }
       },
-      dist: {},
       server: {
         options: {
+          sassDir: '<%= yeoman.app %>/styles',
+          cssDir: '.tmp/styles',
+          imagesDir: '<%= yeoman.app %>/images',
+          javascriptsDir: '<%= yeoman.app %>/scripts',
+          fontsDir: '<%= yeoman.app %>/styles/fonts',
+          importPath: '<%= yeoman.app %>/components',
+          relativeAssets: true,
           debugInfo: true
         }
       }
@@ -282,7 +297,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('travis', [
     'jshint',
-    'karma'
+    'karma:travis'
   ]);
 
   grunt.registerTask('build', [
