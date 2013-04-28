@@ -7,6 +7,10 @@ angular.module('steps2makeApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/recipe/add', {
+        templateUrl: 'views/createRecipe.html',
+        controller: 'CreateRecipeCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
