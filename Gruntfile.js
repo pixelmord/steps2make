@@ -280,6 +280,10 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
+  grunt.registerTask('karma', [
+    'karma'
+  ]);
+
   grunt.registerTask('build', [
     'clean:dist',
     'jshint',
