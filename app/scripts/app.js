@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('steps2makeApp', [])
+angular.module('steps2makeApp', ['ui'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -16,7 +16,7 @@ describe('Controller: CreateRecipeCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should have an initial steps count of 0', function () {
+    expect(scope.stepsCount).toEqual(0);
   });
 });

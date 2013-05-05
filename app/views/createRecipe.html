@@ -1,11 +1,27 @@
 <div class="row-fluid">
   <div class="span9 recipe-form">
-    <form class="form-inline"><input type="number" name="steps-count" id="steps-count" class="input-mini" ng-model="stepsCount"/> steps to make me
-    <input type="text" name="recipe-title" id="recipe-title" class="input-xxlarge" placeholder="a sandwich, a hovercraft or a ..." ng-model="recipeTitle"/></form>
+    <form>
+      <div class="form-inline">
+        <fieldset>
+          <legend>Tell us the basics:</legend>
+          <input type="number" name="steps-count" id="steps-count" class="input-mini" ng-model="stepsCount"/> steps to make me
+          <input type="text" name="recipe-title" id="recipe-title" class="input-xxlarge" placeholder="a sandwich, a hovercraft or a ..." ng-model="recipeTitle"/>
+        </fieldset>
+
+      </div>
+      <hr>
+      <fieldset>
+        <textarea ui-redactor='{minHeight: 150}' ng-model='recipeDescription.content'></textarea>
+      </fieldset>
+
+    </form>
   </div>
 
   <div class="span3 well recipe-preview">
-    <h1><span class="steps-count">{{ stepsCount }}</span> steps to make me <span class="recipe-title">{{ recipeTitle }}</span></h1>
+    <h1><span class="steps-count">{{ stepsCount }}</span> steps to make me <em class="recipe-title">{{ recipeTitle }}</em></h1>
+    <div class="recipe-description" ng-bind-html-unsafe="recipeDescription.content">
+
+    </div>
   </div>
 </div>
 
