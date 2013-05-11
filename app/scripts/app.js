@@ -1,25 +1,30 @@
 'use strict';
 
-angular.module('steps2makeApp', ['ui'])
+angular.module('steps2makeApp', ['ui', 'mongolab'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/recipe/add', {
-        templateUrl: 'views/createRecipe.html',
-        controller: 'CreateRecipeCtrl'
+      .when('/projects', {
+        templateUrl: 'views/listProjects.html',
+        controller: 'ListProjectsCtrl'
+      })
+      .when('/projects/add', {
+        templateUrl: 'views/createProject.html',
+        controller: 'CreateProjectCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
 
-angular.module("ui.directives").directive("uiRedactor", [
-  "ui.config", function(uiConfig) {
+angular.module('ui.directives', ['ui'])
+  .directive('uiRedactor', [
+  'ui.config', function(uiConfig) {
     return {
-      require: "ngModel",
+      require: 'ngModel',
       link: function(scope, elm, attrs, ngModelCtrl) {
         var apply, expression, getVal, options, redactor;
 

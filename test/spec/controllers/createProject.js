@@ -1,22 +1,22 @@
 'use strict';
 
-describe('Controller: CreateRecipeCtrl', function () {
+describe('Controller: CreateProjectCtrl', function () {
 
   // load the controller's module
   beforeEach(module('steps2makeApp'));
 
-  var CreateRecipeCtrl,
+  var CreateProjectCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CreateRecipeCtrl = $controller('CreateRecipeCtrl', {
+    CreateProjectCtrl = $controller('CreateProjectCtrl', {
       $scope: scope
     });
   }));
 
   it('should have an initial steps count of 0', function () {
-    expect(scope.stepsCount).toEqual(0);
+    expect(scope.project.stepsCount).toEqual(0);
   });
 });
