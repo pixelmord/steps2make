@@ -21,8 +21,7 @@ angular.module('steps2makeApp', ['ui', 'mongolab'])
   });
 
 angular.module('ui.directives', ['ui'])
-  .directive('uiRedactor', [
-  'ui.config', function(uiConfig) {
+  .directive('uiRedactor', function() {
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ngModelCtrl) {
@@ -30,7 +29,7 @@ angular.module('ui.directives', ['ui'])
 
         redactor = null;
         getVal = function() {
-          return redactor != null ? redactor.getCode() : void 0;
+          return redactor !== null ? redactor.getCode() : void 0;
         };
         apply = function() {
           ngModelCtrl.$pristine = false;
@@ -56,14 +55,14 @@ angular.module('ui.directives', ['ui'])
           }
         });
         ngModelCtrl.$render = function() {
-          return redactor != null ? redactor.setCode(ngModelCtrl.$viewValue || '') : void 0;
+          return redactor !== null ? redactor.setCode(ngModelCtrl.$viewValue || '') : void 0;
         };
         expression = attrs.uiRedactor ? scope.$eval(attrs.uiRedactor) : {};
         angular.extend(options, expression);
         return setTimeout(function() {
-          return redactor = elm.redactor(options);
+          redactor = elm.redactor(options);
+          return redactor;
         });
       }
     };
-  }
-]);
+  });
