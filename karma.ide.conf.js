@@ -3,6 +3,7 @@
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
+
 // list of files / patterns to load in the browser
 files = [
   JASMINE,
@@ -48,7 +49,7 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome', 'ChromeCanary'];
+browsers = ['Chrome', 'Firefox'];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;

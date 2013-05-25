@@ -1,6 +1,6 @@
 {
   "name": "steps2make",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -31,5 +31,27 @@
   },
   "scripts": {
     "test": "grunt travis --verbose"
+  },
+  "readmeFilename": "README.md",
+  "gitHead": "b607e3a6efab8ff4fc2e6b212b769c186640251e",
+  "description": "steps2make ==========",
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixelmord/steps2make.git"
+  },
+  "keywords": [
+    "webapp",
+    "makers",
+    "builders",
+    "cooks"
+  ],
+  "author": "Andreas Sahle (@pixelmord)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/pixelmord/steps2make/issues"
   }
 }

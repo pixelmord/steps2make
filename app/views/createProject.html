@@ -5,7 +5,7 @@
         <fieldset>
           <legend>About the basics:</legend>
           <input type="number" name="steps-count" id="steps-count" class="input-mini" ng-model="project.stepsCount"/>
-          &nbsp;<span ng-pluralize count="stepsCount" when="{'0': 'steps','1': 'step', 'other': 'steps'}"></span>&nbsp;to make me
+          &nbsp;<span ng-pluralize count="project.stepsCount" when="{'0': 'steps','1': 'step', 'other': 'steps'}"></span>&nbsp;to make me
           <input type="text" name="project-title" id="project-title" class="input-xxlarge" placeholder="a sandwich, a hovercraft or a ..." ng-model="project.title" required/>
         </fieldset>
 
@@ -16,9 +16,11 @@
       </fieldset>
       <fieldset>
         <legend>About the tools and material:</legend>
-        <div class="project-form-ingredients" stm-ingredients>
+        <ul class="unstyled" ng-model="project.ingredients" ui-sortable>
           <stm-ingredient ng-repeat="ingredient in project.ingredients"></stm-ingredient>
-        </div>
+        </ul>
+        <button class="btn btn-info" ng-click="addIngredient()">Add ingredient</button>
+
       </fieldset>
       <div class="form-actions">
         <a href="#/" class="btn">Cancel</a>
@@ -33,7 +35,8 @@
   <div class="span3 well project-preview">
     <h1><span class="steps-count">{{ project.stepsCount }}</span>&nbsp;<span ng-pluralize count="project.stepsCount" when="{'0': 'steps','1': 'step', 'other': 'steps'}"></span>&nbsp;to make me&nbsp;<em class="project-title">{{ project.title }}</em></h1>
     <div class="project-description" ng-bind-html-unsafe="project.description"></div>
-    <table class="table table-striped table-bordered">
+
+    <table class="table table-striped table-bordered" ng-show="project.ingredients.length">
       <thead>
         <tr>
           <th>#</th>

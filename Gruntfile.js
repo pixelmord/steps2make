@@ -133,7 +133,7 @@ module.exports = function (grunt) {
       dist: {
         options: {
           sassDir: '<%= yeoman.app %>/styles',
-          cssDir: '<%= yeoman.dist %>/styles',
+          cssDir: '<%= yeoman.app %>/styles',
           imagesDir: '<%= yeoman.app %>/images',
           javascriptsDir: '<%= yeoman.app %>/scripts',
           fontsDir: '<%= yeoman.app %>/styles/fonts',
