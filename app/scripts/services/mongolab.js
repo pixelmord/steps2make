@@ -5,12 +5,13 @@
  */
 'use strict';
 
-angular.module('mongolab', ['ngResource']).
-  factory('Project', function($resource) {
+angular.module('mongolab', ['ngResource', 'configProvider']).
+  factory('Project', function($resource, Config) {
 
-    var Project = $resource('https://api.mongolab.com/api/1/databases' +
-      '/your_db/collections/projects/:id',
-      { apiKey: 'xxx' }, {
+    var config = Config.mongolab(),
+      Project = $resource('https://api.mongolab.com/api/1/databases' +
+      '/' + config.dbName + '/collections/projects/:id',
+      { apiKey: config.apiKey }, {
         update: { method: 'PUT' }
       }
     );
