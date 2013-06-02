@@ -22,12 +22,24 @@
         <button class="btn btn-info" ng-click="addIngredient()">Add ingredient</button>
 
       </fieldset>
+      <fieldset>
+        <div ng-controller="ImageAutoCompleteCtrl" class="ui-widget">
+          <input id="image-autocomplete" class="input-large" placeholder="Search for flickr images by tag ..." ng-model="imageSearch.tag" ui-autocomplete="tagAutocompleteOptions"/>
+          <ul class="image-results unstyled" ng-show="imageResults.length">
+            <li class="image-result" ng-repeat="image in imageResults">
+
+              <img src="http://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_q.jpg" alt=""/>
+              {{image.title}}
+            </li>
+          </ul>
+        </div>
+
+
+      </fieldset>
       <div class="form-actions">
         <a href="#/" class="btn">Cancel</a>
-        <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
-                class="btn btn-primary">Save</button>
-        <button ng-click="destroy()"
-                ng-show="project._id" class="btn btn-danger">Delete</button>
+        <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">Save</button>
+        <button ng-click="destroy()" ng-show="project._id" class="btn btn-danger">Delete</button>
       </div>
     </form>
   </div>

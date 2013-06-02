@@ -8,7 +8,8 @@ angular.module('configProvider', [])
   .factory('Config', function() {
     var config = {
       flickr: {
-        apiKey: 'THEKEY'
+        apiKey: 'THEKEY',
+        userID: 'YOURID'
       },
       mongolab: {
         apiKey: 'THEKEY',
