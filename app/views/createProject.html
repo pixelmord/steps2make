@@ -23,13 +23,16 @@
 
       </fieldset>
       <fieldset>
+        <legend>Add an image:</legend>
         <div ng-controller="ImageAutoCompleteCtrl" class="ui-widget">
           <input id="image-autocomplete" class="input-large" placeholder="Search for flickr images by tag ..." ng-model="imageSearch.tag" ui-autocomplete="tagAutocompleteOptions"/>
-          <ul class="image-results unstyled" ng-show="imageResults.length">
+          <ul class="image-results unstyled inline" ng-show="imageResults.length">
             <li class="image-result" ng-repeat="image in imageResults">
+              <figure>
+                <img src="http://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_q.jpg" alt=""/>
+                <figcaption>{{image.title}}</figcaption>
+              </figure>
 
-              <img src="http://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_q.jpg" alt=""/>
-              {{image.title}}
             </li>
           </ul>
         </div>
