@@ -20,6 +20,10 @@ angular.module('steps2makeApp', ['ui', 'mongolab'])
       });
   });
 
+angular.module('steps2makeApp').config(['$httpProvider', function($httpProvider) {
+  delete $httpProvider.defaults.headers.common["X-Requested-With"]
+}]);
+
 angular.module('ui.directives', ['ui'])
   .directive('uiRedactor', function() {
     return {
@@ -65,4 +69,25 @@ angular.module('ui.directives', ['ui'])
         });
       }
     };
-  });
+  })
+  .directive('uiAutocomplete', ['ui.config', function(uiConfig) {
+    var directive = {
+      require: '?ngModel',
+      link: function(scope, element, attrs, controller) {
+        var options = {};
+        if (uiConfig.autocomplete) {
+          angular.extend(options, uiConfig.autocomplete);
+        }
+        var initAutocompleteWidget = function () {
+          var opts = angular.extend({}, options, scope.$eval(attrs.uiAutocomplete));
+          element.autocomplete(opts);
+          if (opts._renderItem) {
+            element.data("ui-autocomplete")._renderItem = opts._renderItem;
+          }
+        };
+        // Watch for changes to the directives options
+        scope.$watch(attrs.uiAutocomplete, initAutocompleteWidget, true);
+      }
+    };
+    return directive;
+  }]);

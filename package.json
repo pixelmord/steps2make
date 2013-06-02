@@ -50,7 +50,7 @@
     "cooks"
   ],
   "author": "Andreas Sahle (@pixelmord)",
-  "license": "BSD",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/pixelmord/steps2make/issues"
   }
