@@ -21,7 +21,7 @@ angular.module('steps2makeApp', ['ui', 'mongolab'])
   });
 
 angular.module('steps2makeApp').config(['$httpProvider', function($httpProvider) {
-  delete $httpProvider.defaults.headers.common["X-Requested-With"]
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
 
 angular.module('ui.directives', ['ui'])
@@ -73,7 +73,7 @@ angular.module('ui.directives', ['ui'])
   .directive('uiAutocomplete', ['ui.config', function(uiConfig) {
     var directive = {
       require: '?ngModel',
-      link: function(scope, element, attrs, controller) {
+      link: function(scope, element, attrs) {
         var options = {};
         if (uiConfig.autocomplete) {
           angular.extend(options, uiConfig.autocomplete);
@@ -82,7 +82,7 @@ angular.module('ui.directives', ['ui'])
           var opts = angular.extend({}, options, scope.$eval(attrs.uiAutocomplete));
           element.autocomplete(opts);
           if (opts._renderItem) {
-            element.data("ui-autocomplete")._renderItem = opts._renderItem;
+            element.data('ui-autocomplete')._renderItem = opts._renderItem;
           }
         };
         // Watch for changes to the directives options

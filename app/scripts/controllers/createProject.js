@@ -42,20 +42,20 @@ angular.module('steps2makeApp')
       searchTags = function(request, response) {
         var callback = function(data) {
           var tagList = [];
-          angular.forEach(data.who.tags.tag, function(value, key) {
-            if (value._content.indexOf($scope.imageSearch.tag) !=-1) {
+          angular.forEach(data.who.tags.tag, function(value) {
+            if (value._content.indexOf($scope.imageSearch.tag) !== -1) {
               tagList.push(value);
             }
           });
           response(tagList);
         };
-        $http.get("http://api.flickr.com/services/rest/?method=flickr.tags.getListUser&api_key=" + config.apiKey + "&user_id=" + config.userID + "&format=json&nojsoncallback=1&per_page=100")
+        $http.get('http://api.flickr.com/services/rest/?method=flickr.tags.getListUser&api_key=' + config.apiKey + '&user_id=' + config.userID + '&format=json&nojsoncallback=1&per_page=100')
           .success(callback);
       },
       _renderTagItem = function (ul, item) {
-        return $("<li>")
-          .data("item.autocomplete", item)
-          .append("<a>" + item._content + "</a>")
+        return $('<li>')
+          .data('item.autocomplete', item)
+          .append('<a>' + item._content + '</a>')
           .appendTo(ul);
       },
 
@@ -64,7 +64,7 @@ angular.module('steps2makeApp')
         if (ui.item) {
           event.preventDefault();
           $scope.imageSearch.tag = ui.item._content;
-          $(this).val( ui.item._content)
+          $(this).val( ui.item._content);
           updateImageList();
         }
       };

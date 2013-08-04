@@ -3,7 +3,7 @@
  * Date: 01.06.13
  * Time: 22:31
  */
-
+'use strict';
 angular.module('configProvider', [])
   .factory('Config', function() {
     var config = {
@@ -15,7 +15,7 @@ angular.module('configProvider', [])
         apiKey: 'THEKEY',
         dbName: 'DBNAME'
       }
-    }
+    };
 
     return {
       flickr: function() {
