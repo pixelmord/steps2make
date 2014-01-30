@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('steps2makeApp', ['ui', 'mongolab'])
+angular.module('steps2makeApp', ['ui', 'mongolab', 'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -24,12 +24,13 @@ angular.module('steps2makeApp').config(['$httpProvider', function($httpProvider)
   delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
 
-angular.module('ui.directives', ['ui'])
-  .directive('uiRedactor', function() {
+angular.module('ui.directives')
+  .directive('uiRedactor', ['ui.config',function(uiConfig) {
+    var options = uiConfig.uiRedactor || {};
     return {
       require: 'ngModel',
       link: function(scope, elm, attrs, ngModelCtrl) {
-        var apply, expression, getVal, options, redactor;
+        var apply, expression, getVal, opt, redactor;
 
         redactor = null;
         getVal = function() {
@@ -39,7 +40,7 @@ angular.module('ui.directives', ['ui'])
           ngModelCtrl.$pristine = false;
           return scope.$apply();
         };
-        options = {
+        opt = {
           execCommandCallback: apply,
           keydownCallback: apply,
           keyupCallback: apply,
@@ -62,6 +63,7 @@ angular.module('ui.directives', ['ui'])
           return redactor !== null ? redactor.setCode(ngModelCtrl.$viewValue || '') : void 0;
         };
         expression = attrs.uiRedactor ? scope.$eval(attrs.uiRedactor) : {};
+        angular.extend(options, opt);
         angular.extend(options, expression);
         return setTimeout(function() {
           redactor = elm.redactor(options);
@@ -69,7 +71,7 @@ angular.module('ui.directives', ['ui'])
         });
       }
     };
-  })
+  }])
   .directive('uiAutocomplete', ['ui.config', function(uiConfig) {
     var directive = {
       require: '?ngModel',
