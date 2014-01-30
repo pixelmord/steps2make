@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span9 project-form">
+  <div class="span8 project-form">
     <form name="projectData">
       <div class="form-inline">
         <fieldset>
@@ -19,7 +19,7 @@
         <ul class="unstyled" ng-model="project.ingredients" ui-sortable>
           <stm-ingredient ng-repeat="ingredient in project.ingredients"></stm-ingredient>
         </ul>
-        <button class="btn btn-info" ng-click="addIngredient()">Add ingredient</button>
+        <button class="btn btn-info" ng-click="addIngredient()">Add</button>
 
       </fieldset>
       <fieldset>
@@ -32,11 +32,10 @@
                 <img src="http://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}_q.jpg" alt=""/>
                 <figcaption>{{image.title}}</figcaption>
               </figure>
-
             </li>
           </ul>
-        </div>
 
+        </div>
 
       </fieldset>
       <div class="form-actions">
@@ -47,9 +46,9 @@
     </form>
   </div>
 
-  <div class="span3 well project-preview">
-    <h1><span class="steps-count">{{ project.stepsCount }}</span>&nbsp;<span ng-pluralize count="project.stepsCount" when="{'0': 'steps','1': 'step', 'other': 'steps'}"></span>&nbsp;to make me&nbsp;<em class="project-title">{{ project.title }}</em></h1>
-    <div class="project-description" ng-bind-html-unsafe="project.description"></div>
+  <div class="span4 well project-preview">
+    <h1 ng-show="project.title.length"><span class="steps-count" ng-show="project.stepsCount">{{ project.stepsCount }}&nbsp;</span><span ng-pluralize count="project.stepsCount" when="{'0': 'Steps','1': 'step', 'other': 'steps'}"></span>&nbsp;to make me&nbsp;<em class="project-title">{{ project.title }}</em></h1>
+    <div class="project-description" ng-bind-html="project.description"></div>
 
     <table class="table table-striped table-bordered" ng-show="project.ingredients.length">
       <thead>
