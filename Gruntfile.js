@@ -312,8 +312,9 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.client %>',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
             'views/{,*/}*.html',
+            'scripts/*',
+            'styles/*',
             'components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
