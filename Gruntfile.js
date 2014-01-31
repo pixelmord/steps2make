@@ -21,8 +21,7 @@ module.exports = function (grunt) {
     yeoman: {
       // configurable paths
       app: require('./bower.json').appPath || 'app',
-      dist: 'public',
-      client: 'www'
+      dist: 'public'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -118,16 +117,6 @@ module.exports = function (grunt) {
             '.tmp',
             '<%= yeoman.dist %>/*',
             '!<%= yeoman.dist %>/.git*'
-          ]
-        }]
-      },
-      client: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= yeoman.client %>/*',
-            '!<%= yeoman.client %>/.git*'
           ]
         }]
       },
@@ -304,32 +293,6 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }]
       },
-      client: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.dist %>',
-          dest: '<%= yeoman.client %>',
-          src: [
-            '*.{ico,png,txt}',
-            'index.html',
-            'views/{,*/}*.html',
-            'scripts/*',
-            'styles/*',
-            'components/**/*',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
-          ]
-        }, {
-          expand: true,
-          cwd: 'phonegap',
-          dest: '<%= yeoman.client %>',
-          src: [
-            //'index.html',
-            'config.xml'
-          ]
-        }]
-      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -443,14 +406,6 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
-
-  grunt.registerTask('buildclient', function () {
-    grunt.task.run([
-      'clean:client',
-      'build',
-      'copy:client'
-    ]);
-  });
 
   grunt.registerTask('default', [
     'newer:jshint',
