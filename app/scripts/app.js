@@ -25,6 +25,7 @@ angular.module('steps2makeApp').config(['$httpProvider', function($httpProvider)
 }]);
 
 angular.module('ui.directives')
+  // @todo: replace redactor since it is a non free editor
   .directive('uiRedactor', ['ui.config',function(uiConfig) {
     var options = uiConfig.uiRedactor || {};
     return {
