@@ -312,6 +312,7 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.client %>',
           src: [
             '*.{ico,png,txt}',
+            'index.html',
             'views/{,*/}*.html',
             'scripts/*',
             'styles/*',
@@ -324,7 +325,7 @@ module.exports = function (grunt) {
           cwd: 'phonegap',
           dest: '<%= yeoman.client %>',
           src: [
-            'index.html',
+            //'index.html',
             'config.xml'
           ]
         }]
